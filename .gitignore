@@ -1,0 +1,68 @@
+# --- Node.js / JavaScript ---
+# Ignore node_modules directory
+node_modules/
+
+# Ignore logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Ignore runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Ignore various IDEs and editors folders
+.vscode/
+.idea/
+*.sw*
+*.swo
+
+# Ignore npm published directory
+/dist
+
+# Ignore dotenv environment variable files
+.env
+.env.test
+
+# Ignore Mac system files
+.DS_Store
+
+# Ignore SASS config files
+.sass-cache
+
+# --- Terraform ---
+# Ignore .terraform directories
+**/.terraform/*
+
+# Ignore .tfstate files
+*.tfstate
+*.tfstate.*
+
+# Ignore crash log files
+crash.log
+
+# Ignore override files as they can contain sensitive details
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Ignore CLI configuration files
+.terraformrc
+terraform.rc
+
+# Ignore all .tfvars files as they might contain sensitive data
+*.tfvars
+
+# Ignore Terraform .plan files
+*.plan
+
+# Additional files
+*.backup
+*.bak
+
