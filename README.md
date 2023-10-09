@@ -30,8 +30,8 @@ This Terraform project provisions the following AWS resources:
 Clone the repository and navigate to the project directory:
 
 ```sh
-git clone [Your Repository URL]
-cd [Repository Directory]
+git clone git@github.com:tux86/static-website-hosting-amazon-s3.git
+cd static-website-hosting-amazon-s3
 ```
 
 ### 2. Initialize Terraform
