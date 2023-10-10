@@ -22,9 +22,6 @@ pids
 *.sw*
 *.swo
 
-# Ignore npm published directory
-/dist
-
 # Ignore dotenv environment variable files
 .env
 .env.test

@@ -25,7 +25,7 @@ This Terraform project provisions the following AWS resources:
 
 ## Setup Instructions
 
-### 1. Clone the Repository (Optional)
+### 1. Clone the Repository
 
 Clone the repository and navigate to the project directory:
 
