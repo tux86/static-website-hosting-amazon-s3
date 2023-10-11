@@ -37,7 +37,7 @@ resource "aws_cloudfront_distribution" "root_s3_distribution" {
 
     function_association {
       event_type   = "viewer-request"
-      function_arn = aws_cloudfront_function.www-redirect.arn
+      function_arn = aws_cloudfront_function.www_redirect.arn
     }
   }
 
@@ -61,9 +61,9 @@ resource "aws_cloudfront_distribution" "root_s3_distribution" {
   A CloudFront function to redirect www-prefixed URLs to the apex domain,
   enhancing user experience and consolidating domain authority.
 */
-resource "aws_cloudfront_function" "www-redirect" {
+resource "aws_cloudfront_function" "www_redirect" {
   name    = "${local.prefix}-www-redirect"
   runtime = "cloudfront-js-1.0"
-  code    = file("./cloudfrontFunction.js")
+  code    = file("./cloudfront-function.js")
   publish = true
 }
