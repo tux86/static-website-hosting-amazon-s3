@@ -3,8 +3,7 @@ terraform {
     encrypt        = true
     bucket         = "tux86-terraform"
     dynamodb_table = "terraform-state-lock"
-    key            = "terraform.tfstate"
-   // workspace_key_prefix = ""
+    key            = "static_website/terraform.tfstate"
     region         = "us-east-1"
   }
 }

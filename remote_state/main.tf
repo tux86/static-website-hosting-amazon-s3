@@ -41,13 +41,13 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "remote_state" {
 # Define a DynamoDB table to manage state locking and consistency
 resource "aws_dynamodb_table" "terraform_state_lock" {
   name         = var.state_lock_dynamodb_table_name
-  billing_mode = "PAY_PER_REQUEST" # Use on-demand capacity pricing
-  hash_key     = "LockID"          # Define the primary key
+  billing_mode = "PAY_PER_REQUEST"
+  hash_key     = "LockID"
 
   # Define the attributes of the primary key
   attribute {
     name = "LockID"
-    type = "S" # The attribute is of type String
+    type = "S"
   }
 
   # Prevent the DynamoDB table from being accidentally destroyed

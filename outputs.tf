@@ -5,10 +5,14 @@ output "s3_url" {
 
 output "cdn_url" {
   description = "Cloudfront distribution URL (HTTPS)"
-  value       = "https://${aws_cloudfront_distribution.root_s3_distribution.domain_name}"
+  value       = "https://${aws_cloudfront_distribution.s3_distribution.domain_name}"
 }
 
 output "website_url" {
   description = "Website URL (HTTPS)"
   value       = "https://${var.domain_name}"
+}
+
+output "dist_files" {
+  value = fileset(local.dist_dir, "**/*")
 }

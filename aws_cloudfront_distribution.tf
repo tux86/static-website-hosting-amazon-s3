@@ -1,28 +1,33 @@
-resource "aws_cloudfront_distribution" "root_s3_distribution" {
+resource "aws_cloudfront_origin_access_identity" "current" {
+  comment = "OAI for ${aws_s3_bucket.static_website.bucket}"
+}
+
+resource "aws_cloudfront_distribution" "s3_distribution" {
+
+  depends_on = [aws_s3_bucket.static_website]
 
   origin {
-    domain_name = aws_s3_bucket_website_configuration.website_bucket.website_endpoint
-    origin_id   = aws_s3_bucket.website_bucket.bucket_regional_domain_name
 
-    # https://stackoverflow.com/a/55042824/4198382
-    custom_origin_config {
-      http_port                = 80
-      https_port               = 443
-      origin_keepalive_timeout = 5
-      origin_read_timeout      = 30
-      origin_protocol_policy   = "http-only"
-      origin_ssl_protocols     = ["TLSv1.2"]
+    domain_name = aws_s3_bucket.static_website.bucket_regional_domain_name
+    origin_id   = "${var.bucket_name}-origin"
+
+    s3_origin_config {
+      origin_access_identity = aws_cloudfront_origin_access_identity.current.cloudfront_access_identity_path
     }
+
   }
 
-  comment         = "CloudFront distribution for ${var.bucket_name}"
+  comment         = "${var.domain_name} distribution"
   enabled         = true
   is_ipv6_enabled = true
   http_version    = "http2and3"
+  price_class     = "PriceClass_100" // Use only North America and Europe
+
+  // wait_for_deployment = true
 
   aliases = [
     var.domain_name,
-    "www.${var.bucket_name}"
+    "www.${var.domain_name}"
   ]
 
   default_root_object = "index.html"
@@ -33,7 +38,7 @@ resource "aws_cloudfront_distribution" "root_s3_distribution" {
     allowed_methods        = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
     cached_methods         = ["GET", "HEAD"]
     compress               = true
-    target_origin_id       = aws_s3_bucket.website_bucket.bucket_regional_domain_name
+    target_origin_id       = "${var.bucket_name}-origin"
 
     function_association {
       event_type   = "viewer-request"

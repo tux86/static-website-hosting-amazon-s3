@@ -19,5 +19,6 @@ variable "bucket_name" {
 }
 
 variable "common_tags" {
+  type        = map(string)
   description = "Common tags you want applied to all components."
 }
