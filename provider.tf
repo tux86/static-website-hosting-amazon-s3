@@ -4,7 +4,7 @@ provider "aws" {
   #  profile                  = "default"
 }
 
-# certificate has to be created in us-east-1 due to cloudfront pre-requisite
+# CloudFront requires SSL certificates to be provisioned in the North Virginia (us-east-1) region.
 provider "aws" {
   alias  = "acm_provider"
   region = "us-east-1"

@@ -1,5 +1,8 @@
-resource "aws_cloudfront_origin_access_identity" "current" {
-  comment = "OAI for ${aws_s3_bucket.static_website.bucket}"
+resource "aws_cloudfront_origin_access_control" "current" {
+  name                              = "OAC ${aws_s3_bucket.static_website.bucket}"
+  origin_access_control_origin_type = "s3"
+  signing_behavior                  = "always"
+  signing_protocol                  = "sigv4"
 }
 
 resource "aws_cloudfront_distribution" "s3_distribution" {
@@ -7,14 +10,9 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   depends_on = [aws_s3_bucket.static_website]
 
   origin {
-
-    domain_name = aws_s3_bucket.static_website.bucket_regional_domain_name
-    origin_id   = "${var.bucket_name}-origin"
-
-    s3_origin_config {
-      origin_access_identity = aws_cloudfront_origin_access_identity.current.cloudfront_access_identity_path
-    }
-
+    domain_name              = aws_s3_bucket.static_website.bucket_regional_domain_name
+    origin_id                = "${var.bucket_name}-origin"
+    origin_access_control_id = aws_cloudfront_origin_access_control.current.id
   }
 
   comment         = "${var.domain_name} distribution"

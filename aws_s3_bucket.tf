@@ -1,5 +1,3 @@
-data "aws_region" "current" {}
-
 # S3 src website bucket
 resource "aws_s3_bucket" "static_website" {
   bucket = var.bucket_name
