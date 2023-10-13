@@ -5,7 +5,8 @@ Deploy a secure & highly available static website on AWS using S3, CloudFront, A
 
 ## Architecture
 
-![architecture-diagram-aws-static-website](https://github.com/tux86/walidkarray.com/assets/9397970/afe103cf-b83e-4146-b669-53d82a818806)
+![architecture-diagram-aws-static-website](https://github.com/tux86/static-website-hosting-amazon-s3/assets/9397970/5023726f-1887-49e4-b845-1cd6da959ec2)
+
 
 ## Prerequisites
 
