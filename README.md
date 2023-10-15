@@ -8,7 +8,7 @@ For a deeper understanding of this project and mastering static website hosting 
 
 [Mastering Static Website Hosting on AWS with Terraform: A Step-by-Step Tutorial](https://medium.com/@walid.karray/mastering-static-website-hosting-on-aws-with-terraform-a-step-by-step-tutorial-5401ccd2f4fb)
 
-## Architecture
+## Architecture Diagram
 
 ![architecture-diagram-aws-static-website](https://github.com/tux86/static-website-hosting-amazon-s3/assets/9397970/5023726f-1887-49e4-b845-1cd6da959ec2)
 
